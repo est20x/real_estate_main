@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  --font-gilroy: "Gilroy", sans-serif;
+  --color-black: #000000;
+  --color-dark-blue: #011b2a;
+  --color-blue-primary: #155277;
+  --color-blue-dark: #162a35;
+  --color-blue-accent: #36a3e5;
+  --color-yellow-dark: #453e0c;
+  --color-blue-light: #72caff;
+  --color-blue-highlight: #82d3ff;
+  --color-gray: #9f9f9f;
+  --color-gray-light: #aeaeae;
+  --color-blue-pale: #b7dcf2;
+  --color-blue-lightest: #ebf8ff;
+  --color-white: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-gilroy), var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Custom colors for Tailwind */
+  --color-blue-primary: #155277;
+  --color-blue-accent: #36a3e5;
+  --color-blue-light: #72caff;
+  --color-blue-highlight: #82d3ff;
+  --color-blue-pale: #b7dcf2;
+  --color-blue-lightest: #ebf8ff;
+  --color-dark-blue: #011b2a;
+  --color-yellow-dark: #453e0c;
+  --color-gray: #9f9f9f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-gilroy), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Apply Gilroy font to all inputs and selects */
+input,
+select,
+textarea,
+.react-tel-input input {
+  font-family: var(--font-gilroy), Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Nuclear overflow fix — catches any rogue element */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Unified hover and active effects for all CTA buttons */
+a[href="#contact-form"],
+button[type="submit"] {
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fix PhoneInput rounded corners - always match input border-radius */
+.react-tel-input .flag-dropdown,
+.react-tel-input .flag-dropdown:hover,
+.react-tel-input .flag-dropdown:focus,
+.react-tel-input .flag-dropdown.open,
+.react-tel-input .flag-dropdown .selected-flag,
+.react-tel-input .flag-dropdown .selected-flag:hover,
+.react-tel-input .flag-dropdown .selected-flag:focus {
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+
+/* Mobile and tablet */
+@media (min-width: 768px) {
+  .react-tel-input .flag-dropdown,
+  .react-tel-input .flag-dropdown:hover,
+  .react-tel-input .flag-dropdown:focus,
+  .react-tel-input .flag-dropdown.open,
+  .react-tel-input .flag-dropdown .selected-flag,
+  .react-tel-input .flag-dropdown .selected-flag:hover,
+  .react-tel-input .flag-dropdown .selected-flag:focus {
+    border-top-left-radius: 12px !important;
+    border-bottom-left-radius: 12px !important;
+  }
+}
+
+/* Desktop 2xl */
+@media (min-width: 1536px) {
+  .react-tel-input .flag-dropdown,
+  .react-tel-input .flag-dropdown:hover,
+  .react-tel-input .flag-dropdown:focus,
+  .react-tel-input .flag-dropdown.open,
+  .react-tel-input .flag-dropdown .selected-flag,
+  .react-tel-input .flag-dropdown .selected-flag:hover,
+  .react-tel-input .flag-dropdown .selected-flag:focus {
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+  }
+}
+
+.react-tel-input .form-control {
+  border-radius: inherit !important;
+}
+
+a[href="#contact-form"]::before,
+button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+a[href="#contact-form"]:hover::before,
+button[type="submit"]:hover::before,
+a[href="#contact-form"]:active::before,
+button[type="submit"]:active::before {
+  left: 100%;
+}
+
+a[href="#contact-form"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  filter: brightness(1.05);
+}
+
+a[href="#contact-form"]:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ═══ Mobile shimmer — auto-looping sweep on touch devices ═══ */
+@keyframes shimmer-sweep {
+  0%   { left: -100%; }
+  30%  { left: 100%; }
+  100% { left: 100%; }
+}
+
+/* On touch/mobile devices (no hover capability), run shimmer in a loop */
+@media (hover: none) {
+  a[href="#contact-form"]::before,
+  button[type="submit"]::before {
+    animation: shimmer-sweep 2.5s ease-in-out infinite;
+    transition: none;
+  }
+
+  /* Disable the transform lift on mobile (can feel clunky on touch) */
+  a[href="#contact-form"]:hover {
+    transform: none;
+    box-shadow: none;
+    filter: none;
+  }
+}
