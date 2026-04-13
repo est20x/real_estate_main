@@ -206,7 +206,7 @@ export default function ContactForm() {
             </div>
             <div className="flex flex-col items-start self-stretch mb-[18px] md:mb-5 lg:mb-6 gap-[7px] md:gap-2.5 lg:gap-3 relative z-10">
               <span className="text-white text-lg md:text-xl lg:text-2xl font-semiboldbold ">
-                Как с нами связаться:
+                Как с вами связаться:
               </span>
               <div className="flex items-center self-stretch gap-0 rounded-md md:rounded-lg bg-[#FFFFFF1A] overflow-hidden">
                 <AnimatedButton
@@ -345,7 +345,7 @@ export default function ContactForm() {
 
                 <div className="flex flex-col gap-4 2xl:gap-3 relative z-10 w-full mb-2 2xl:mb-1">
                   <span className="text-white text-[18px] 2xl:text-[14px] font-bold">
-                    Как с нами связаться:
+                    Как с вами связаться:
                   </span>
                   <div className="flex items-stretch self-stretch rounded-xl 2xl:rounded-[10px] border-x-[1px] border-y-[1px] border-[#ffffff40] bg-[#FFFFFF0A] overflow-hidden">
                     <AnimatedButton
